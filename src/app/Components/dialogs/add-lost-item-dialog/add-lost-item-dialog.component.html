@@ -1,0 +1,45 @@
+<h3>Add Lost Item</h3>
+
+<form [formGroup]="lostItemFormGroup"
+      fxLayout="column" style="overflow-y:auto; max-height:80vh">
+  <div fxLayout="row" style="flex:1 0 64px!important">
+    <div fxFlex>
+      <mat-form-field style="width:45%; float: left">
+        <input type="text" placeholder="Name" matInput formControlName="name">
+        <mat-error *ngIf="lostItemFormGroup.get('name').touched && !lostItemFormGroup.get('name').valid">
+          Name is required
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <mat-form-field style="float: right; width: 45%">
+      <mat-label>Category</mat-label>
+      <mat-select formControlName="category" required>
+        <mat-option>--</mat-option>
+        <mat-option *ngFor="let category of categories" [value]="category.id">
+          {{category.name}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="lostItemFormGroup.get('category').hasError('required')">Please choose a category</mat-error>
+    </mat-form-field>
+
+    <mat-form-field style="width: 100%;" class="example-full-width">
+      <textarea formControlName="description" matInput placeholder="Description"></textarea>
+    </mat-form-field>
+  </div>
+
+</form>
+
+<div fxLayout="column" fxLayoutGap="15px">
+
+  <h3>Choose File(s):</h3>
+  <div style="float: left">
+    <input multiple class="chooseFile"
+           style="float: left; color:#607d8b" type="file" (change)="onFileSelected($event)">
+  </div>
+</div>
+
+<div style="float: right" mat-dialog-actions>
+  <button mat-raised-button color="warn" (click)="onNoClick()">Cancel</button>
+  <button mat-raised-button color="primary" (click)="onUpload()">Add Item</button>
+</div>

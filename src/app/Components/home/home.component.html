@@ -1,0 +1,18 @@
+<div style="display: flex; justify-content: center; align-items: center; margin-top: 10vh">
+
+  <div>
+    <h1 style="text-align: center">Welcome to Students Community !</h1>
+
+    <div style="width: 100%; display: flex; justify-content: center; flex-wrap: wrap; margin-top:  10vh">
+      <mat-card (click)="navigateToOption(option.name)"
+                style="width: 20vw; cursor: pointer; margin-right: 5vw; margin-left: 5vw; margin-top: 20px"
+                *ngFor="let option of options">
+        <mat-card-title>
+          <mat-icon>{{option.icon}}</mat-icon>
+          {{option.name}}</mat-card-title>
+        <mat-card-subtitle style="word-break: break-word; max-width: 30vw">{{option.description}}</mat-card-subtitle>
+      </mat-card>
+    </div>
+  </div>
+
+</div>

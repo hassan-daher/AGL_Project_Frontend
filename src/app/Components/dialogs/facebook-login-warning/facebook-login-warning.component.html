@@ -1,0 +1,19 @@
+<h2 style="text-align: center">
+  <mat-icon style="vertical-align: sub !important;">warning</mat-icon>
+  Warning!
+</h2>
+<mat-divider></mat-divider>
+<br>
+
+<div fxLayout="column" fxLayoutGap="15px">
+  <h4>You cant perform this action unless you register in this platform</h4>
+</div>
+
+<br>
+
+<div>
+  <div style="float: right" mat-dialog-actions>
+    <button mat-raised-button color="warn" (click)="onNoClick()">Cancel</button>
+    <button class="button" mat-raised-button (click)="onReset()">Ok</button>
+  </div>
+</div>

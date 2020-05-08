@@ -1,0 +1,49 @@
+<div class="search-bar" style="width: 80%; margin-left: 10%; margin-right: 10%; margin-top: 3vh">
+  <form>
+    <mat-form-field style="width: 100%" appearance="outline">
+      <input (keydown)="onKeydown($event)" type="text" placeholder="What did you loose?" matInput
+             [formControl]="myControl">
+      <!--<input type="text" placeholder="What did you loose?" matInput-->
+             <!--[formControl]="myControl">-->
+      <mat-icon style="cursor: pointer" matSuffix>search</mat-icon>
+    </mat-form-field>
+
+  </form>
+
+  <p *ngIf="!loggedinByFB">If you have found a lost item please submit it by clicking <u (click)="openFoundItemPopup()"
+                                                                   style="color: #125eaa; cursor: pointer">here</u>
+  </p>
+  <p *ngIf="loggedinByFB">If you have found a lost item please submit it by clicking <u (click)="openFBWarning()"
+                                                                   style="color: #125eaa; cursor: pointer">here</u>
+  </p>
+
+  <div *ngIf="lostItems || lostItems?.length != 0"
+       style="display: flex; flex-wrap: wrap; justify-content: space-between;" fxFlex="50%">
+
+    <app-found-item fxFlex="50" style="width: 45%; margin-top: 4vh" [lostItem]="lostItem"
+                    *ngFor="let lostItem of lostItems"></app-found-item>
+  </div>
+
+  <div style="display: flex; justify-content: center" *ngIf="!lostItems || lostItems?.length == 0">
+    <nz-empty
+      [nzNotFoundImage]="
+        'https://gw.alipayobjects.com/mdn/miniapp_social/afts/img/A*pevERLJC9v0AAAAAAAAAAABjAQAAAQ/original'
+      "
+      [nzNotFoundContent]="contentTpl"
+      [nzNotFoundFooter]="footerTpl"
+    >
+      <ng-template #contentTpl>
+        <span> No items found :( </span>
+      </ng-template>
+      <ng-template #footerTpl>
+        <button style="display: flex !important; margin-right: auto; margin-left: auto; justify-content: center" mat-stroked-button
+                color="primary" (click)="onGoBackClick()">Search Page</button>
+      </ng-template>
+
+    </nz-empty>
+  </div>
+
+  <br>
+  <br>
+</div>
+

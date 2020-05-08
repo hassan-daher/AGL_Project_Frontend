@@ -1,0 +1,29 @@
+<h2 style="text-align: center">
+  <mat-icon style="vertical-align: sub !important;">warning</mat-icon>
+  Warning!
+</h2>
+<mat-divider></mat-divider>
+<br>
+
+<div fxLayout="column" fxLayoutGap="15px">
+  <p>By confirming this claim, you are explicitly claiming the possession of this item and are responsible for your action.
+    <br>
+    <br>
+    Any miss-beliefs or doubts should be taken into consideration.
+    <br>
+    <br>
+    This transaction will be saved and reviewed by administrators and other potential owners, and can be reported in case
+    of confirmed theft or miss-conduct.
+    <br>
+    <br>
+    Are you sure you want to continue?</p>
+</div>
+
+<br>
+
+<div>
+  <div style="float: right" mat-dialog-actions>
+    <button mat-raised-button color="warn" (click)="onNoClick()">Cancel</button>
+    <button class="button" mat-raised-button (click)="onReset()">Claim</button>
+  </div>
+</div>

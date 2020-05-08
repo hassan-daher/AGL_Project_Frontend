@@ -1,0 +1,28 @@
+<mat-expansion-panel *ngIf="lostItem">
+  <mat-expansion-panel-header>
+    <h5>
+      {{lostItem?.name}}
+    </h5>
+  </mat-expansion-panel-header>
+
+  <div style="max-height: 100%; max-width:100%;position: relative">
+    <carousel interval="0">
+      <slide *ngFor="let im of lostItem?.imageUrls">
+        <img style="background-size: cover; max-width: 100%;
+                        position: center; display: block; margin-left: auto; margin-right: auto;"
+             [src]="im | safeHtml">
+      </slide>
+    </carousel>
+  </div>
+
+  <br>
+  <p>{{lostItem?.description}}</p>
+
+  <div style="float: right" mat-dialog-actions>
+    <button *ngIf="!loggedinByFB" mat-raised-button class="button" (click)="claimItem(lostItem?.id)">Claim Item</button>
+    <button *ngIf="loggedinByFB" mat-raised-button class="button" (click)="openFBWarning()">Claim Item</button>
+  </div>
+  <br>
+  <br>
+</mat-expansion-panel>
+
